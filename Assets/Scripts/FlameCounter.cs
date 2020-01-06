@@ -47,12 +47,17 @@ public class FlameCounter : MonoBehaviour
             {
                 print("GAME OVER!");
             }
-            if (counter >= 4)
+            if (counter >= fireDuration - 4f)
             {
-                Explosion();
+                if (!explosionStarted) {
+                    StartCoroutine(ExplosionEnumarator());
+                }
+                explosionStarted = true;
             }
         }
     }
+    
+    private bool explosionStarted = false;
     
     private IEnumerator ExplosionEnumarator()
     {
@@ -79,11 +84,6 @@ public class FlameCounter : MonoBehaviour
             yield return null;
         }
 
-    }
-
-    public void Explosion()
-    {
-        StartCoroutine(ExplosionEnumarator());
     }
 
     private void ChangeColor(Color c)
