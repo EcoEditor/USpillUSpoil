@@ -14,17 +14,20 @@ public class FlameCounter : MonoBehaviour
     private float counter;
     private Vector3 startingFireValues;
     private float startingLightRange;
-    private Light light;
+    private Light fireLight;
     private bool deacreaseFire;
     private Color DEFAULT_COLOR = Color.white;
 
+    public float fireLeft;
+
     void Start()
     {
+        fireLeft = fireDuration;
+
         deacreaseFire = true;
-        light = transform.GetChild(0).gameObject.GetComponent<Light>(); // 1 is the index of light child.
-        counter = 0;
+        fireLight = GetComponentInChildren<Light>(); // 1 is the index of light child.
         startingFireValues = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
-        startingLightRange = light.range;
+        startingLightRange = fireLight.range;
         ChangeColor(DEFAULT_COLOR);
     }
 
@@ -32,12 +35,15 @@ public class FlameCounter : MonoBehaviour
     {
         if (deacreaseFire)
         {
-            counter += Time.deltaTime;
+            //counter += Time.deltaTime;
 
-            Vector3 shortenFireFactor = transform.localScale - startingFireValues * (1f / fireDuration) * Time.deltaTime;
-            light.range -= startingLightRange * (1f / fireDuration) * Time.deltaTime;
-            transform.localScale = new Vector3(Math.Max(shortenFireFactor.x, 0), Math.Max(shortenFireFactor.y, 0), Math.Max(shortenFireFactor.z, 0));
-            if (counter >= fireDuration)
+            fireLeft -= Time.deltaTime;
+            var fireVal = fireLeft/fireDuration;
+            transform.localScale = Vector3.one * Mathf.Clamp01(fireVal);
+
+            // transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, fireDuration * Time.deltaTime);
+           
+            if (fireLeft <= 0)
             {
                 print("GAME OVER!");
             }
@@ -51,15 +57,15 @@ public class FlameCounter : MonoBehaviour
     private IEnumerator ExplosionEnumarator()
     {
         deacreaseFire = false;
-        float startRange = light.range;
+        float startRange = fireLight.range;
         Vector3 startScale = transform.localScale;
-        Color startColor = light.color;
+        Color startColor = fireLight.color;
         bool isSoundChanged = false;
 
         float t = 0;
         while (t <= EXPLOSION_ANIMATION_TIME)
         {
-            light.range = Mathf.Lerp(startRange, startingLightRange * EXPLOSION_FACTOR, t / EXPLOSION_ANIMATION_TIME);
+            fireLight.range = Mathf.Lerp(startRange, startingLightRange * EXPLOSION_FACTOR, t / EXPLOSION_ANIMATION_TIME);
             transform.localScale = Vector3.Lerp(startScale, startingFireValues * EXPLOSION_FACTOR, t / EXPLOSION_ANIMATION_TIME);
             if (t >= EXPLOSION_ANIMATION_TIME / 4 && !isSoundChanged)
             {
@@ -82,7 +88,7 @@ public class FlameCounter : MonoBehaviour
 
     private void ChangeColor(Color c)
     {
-        light.color = Color.Lerp(c, Color.white, 0.5f); ;
+        fireLight.color = Color.Lerp(c, Color.white, 0.5f); ;
         GetComponent<Renderer>().material.SetColor("_EmissionColor", c);
         GetComponent<Renderer>().material.SetColor("_Color", c);
     }
