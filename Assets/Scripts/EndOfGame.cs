@@ -6,10 +6,19 @@ public class EndOfGame : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        print("you won!");
-
+        print("YOU WIN!");
 
     }
-   
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        foreach (ContactPoint contact in collision.contacts)
+        {
+            print("YOU WIN!");
+            Debug.DrawRay(contact.point, contact.normal, Color.white);
+        }
+        
+    }
+
 }
 

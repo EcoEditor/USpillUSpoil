@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/GameJamMainLena.unity
+    path: Assets/Scenes/GameJamMain.unity
     guid: d0eda02a3c36ef74585f5426e609f92f
   - enabled: 0
-    path: Assets/Scenes/Lena.unity
+    path: Assets/Scenes/ArchiveScenes/Lena.unity
     guid: 3609c807b878137479a7be577b81090c
   - enabled: 0
-    path: Assets/Scenes/OilDrop.unity
+    path: Assets/Scenes/ArchiveScenes/OilDrop.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class OilDropletsSlpatOnCollision : MonoBehaviour
@@ -40,6 +39,10 @@ public class OilDropletsSlpatOnCollision : MonoBehaviour
 		{
 			EmitAtLocation(collisionEvents[i]);
 			Debug.Log("collided with" + other.name);
+            if (other.gameObject.tag=="Finish")
+            {
+                print("YOU WIN!!");
+            }
 		}
 
 	}

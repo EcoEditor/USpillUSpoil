@@ -96,8 +96,8 @@ public class OilCup : MonoBehaviour
             oilFakeSurface.transform.localEulerAngles += surfaceShake;
         }
         // Stabilize surface
-        var surfaceRot = Quaternion.Lerp(oilFakeSurface.transform.localRotation, Quaternion.Euler(-transform.localEulerAngles), toStabilize);
-        oilFakeSurface.transform.localRotation = surfaceRot;
+        var surfaceRot = Quaternion.Lerp(oilFakeSurface.transform.rotation, Quaternion.Euler(-transform.localEulerAngles), toStabilize); //Lena: change to Rotation not local
+        oilFakeSurface.transform.rotation = surfaceRot;
 
         // Detect spill
         var liquidOut = spillCollider.touching.Contains(fakeSurfaceCollider.GetComponent<Collider>());
