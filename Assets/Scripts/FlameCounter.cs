@@ -8,7 +8,7 @@ public class FlameCounter : MonoBehaviour
     public float EXPLOSION_FACTOR = 2;
     public float EXPLOSION_ANIMATION_TIME = 3;
     public Color EXPLOSION_COLOR;
-    public AudioSource audio;
+    public AudioSource fireAudio;
     public AudioClip explosionSound;
 
     private float counter;
@@ -47,18 +47,21 @@ public class FlameCounter : MonoBehaviour
             {
                 print("GAME OVER!");
             }
-            if (counter >= fireDuration - 4f)
-            {
-                if (!explosionStarted) {
-                    StartCoroutine(ExplosionEnumarator());
-                }
-                explosionStarted = true;
-            }
+            //if (counter >= fireDuration - 4f) //the explosion will be triggered by the player
+            //{
+            //    if (!explosionStarted) {
+            //        StartCoroutine(ExplosionEnumarator());
+            //    }
+            //    explosionStarted = true;
+            //}
         }
     }
     
-    private bool explosionStarted = false;
-    
+    //private bool explosionStarted = false;
+    public void CallExplosion()
+    {
+        StartCoroutine(ExplosionEnumarator());
+    }
     private IEnumerator ExplosionEnumarator()
     {
         deacreaseFire = false;
@@ -75,8 +78,8 @@ public class FlameCounter : MonoBehaviour
             if (t >= EXPLOSION_ANIMATION_TIME / 4 && !isSoundChanged)
             {
                 isSoundChanged = true;
-                audio.clip = explosionSound;
-                audio.Play();
+                fireAudio.clip = explosionSound;
+                fireAudio.Play();
             }
             ChangeColor(Color.Lerp(startColor, EXPLOSION_COLOR, t / EXPLOSION_ANIMATION_TIME));
 

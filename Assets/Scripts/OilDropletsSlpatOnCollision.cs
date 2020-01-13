@@ -6,13 +6,17 @@ public class OilDropletsSlpatOnCollision : MonoBehaviour
 	public ParticleSystem oilDroplets;
 	public ParticleSystem splashDroplets;
 
+
+	private FlameCounter flameCounter;
 	List<ParticleCollisionEvent> collisionEvents;
 
 
 	void Start()
 	{
 		collisionEvents = new List<ParticleCollisionEvent>();
-        SetPouringStatus(false);
+		flameCounter = FindObjectOfType<FlameCounter>();
+		SetPouringStatus(false);
+
 	}
 
 	private void Update()
@@ -41,7 +45,11 @@ public class OilDropletsSlpatOnCollision : MonoBehaviour
 			Debug.Log("collided with" + other.name);
             if (other.gameObject.tag=="Finish")
             {
-                print("YOU WIN!!");
+				flameCounter.CallExplosion();
+				oilDroplets.gameObject.SetActive(false);
+				splashDroplets.gameObject.SetActive(false);
+				splashDroplets.Emit(0);
+				print("YOU WIN!!");
             }
 		}
 
