@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 5990955088509072774}
   - component: {fileID: 1440021268661730745}
   - component: {fileID: 1440021268661730744}
-  - component: {fileID: 1440021268661730747}
   - component: {fileID: 1223433351508359214}
+  - component: {fileID: 437940400198576888}
   m_Layer: 0
   m_Name: Tree
   m_TagString: enemy
@@ -84,7 +84,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -121,23 +121,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.0804186, y: 11.037996, z: 0.92275745}
   m_Center: {x: 0.7053019, y: 5.518998, z: -0.0864459}
---- !u!114 &1440021268661730747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1062043380882456375}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3b03118cac712148a3db2f7f45c09f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentRotation: {x: 0, y: 0, z: 0}
-  angleToRotate: {x: 10, y: 0, z: 0}
-  voiceAngle: 80
-  fallSound: {fileID: 8300000, guid: 74c09fa0ba9b8454e88818295ef85cfc, type: 3}
-  SourceVoice: {fileID: 1223433351508359214}
 --- !u!82 &1223433351508359214
 AudioSource:
   m_ObjectHideFlags: 0
@@ -145,7 +128,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1062043380882456375}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 74c09fa0ba9b8454e88818295ef85cfc, type: 3}
@@ -234,3 +217,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &437940400198576888
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062043380882456375}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fdbf2b17b94b37d4098317ff2498c11d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

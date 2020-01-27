@@ -14,14 +14,11 @@ public class treeFalling : MonoBehaviour
     private bool voiceOn = false;
 
     
-
-
     public void Start()
     {
         currentRotation = new Vector3(currentRotation.x % 360f, currentRotation.y % 360f, currentRotation.z % 360f);
         angleToRotate = new Vector3(angleToRotate.x % 360f, angleToRotate.y % 360f, angleToRotate.z % 360f);
-        this.transform.eulerAngles = currentRotation;
-        
+        this.transform.eulerAngles = currentRotation;       
     }
 
     private void Update()
@@ -34,16 +31,10 @@ public class treeFalling : MonoBehaviour
 
             if (currentRotation.x % 360f >= voiceAngle && !voiceOn) 
             {
-  
                 SourceVoice.clip = fallSound;
                 SourceVoice.Play();
-                voiceOn = true;
-         
-            }
-
-            
-        }
-      
+                voiceOn = true;        
+            }            
+        }     
     }
-
 }
