@@ -4,19 +4,21 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     public Vector3 playersInitialPositions; //Place a gameObject indicating the initialPosition;
     public GameObject player; //this is the OVRCameraRig 
     public Canvas mainCanvas;
     public UnityEvent [] levels;
 
-    public Vector3 STARTING_POS;
-    public Vector3 STARTING_SCALE;
     private Camera mainCamera; //this is the actual camera with the fade option
     public EnemyManager enemyManager;
     private int levelCount;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
     private void Start()
     {
         mainCamera = Camera.main;
@@ -72,5 +74,11 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(4);
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0;
+
     }
 }
