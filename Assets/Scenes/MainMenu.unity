@@ -327,6 +327,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1806014036}
     m_Modifications:
+    - target: {fileID: 100000, guid: f8d478291eccec258b76585e45386e4d, type: 3}
+      propertyPath: m_Name
+      value: cupMesh
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f8d478291eccec258b76585e45386e4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.00000099175
@@ -382,10 +386,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: f8d478291eccec258b76585e45386e4d, type: 3}
       propertyPath: m_LocalScale.z
       value: 515.97
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: f8d478291eccec258b76585e45386e4d, type: 3}
-      propertyPath: m_Name
-      value: cupMesh
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8d478291eccec258b76585e45386e4d, type: 3}
@@ -754,14 +754,14 @@ RectTransform:
   m_GameObject: {fileID: 442265813}
   m_LocalRotation: {x: 0.46298665, y: -0, z: -0, w: 0.8863653}
   m_LocalPosition: {x: 0, y: 0, z: -25.279999}
-  m_LocalScale: {x: 0.032729365, y: 0.01740683, z: 0.07301587}
+  m_LocalScale: {x: 0.03750458, y: 0.01740683, z: 0.07301587}
   m_Children: []
   m_Father: {fileID: 2031346280}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 55.160004, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.46, y: -26.77}
+  m_AnchoredPosition: {x: 2.7, y: -26.77}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!135 &442265815
@@ -826,6 +826,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9c46cff71ccc4444a3a8455c6d7ce9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pausedGame: {fileID: 21300000, guid: 34f670515af91884fa62e8d83c06208b, type: 3}
+  _unPausedGame: {fileID: 21300000, guid: 01a9ac15cd009a545859bbccc7b4d4e6, type: 3}
 --- !u!1001 &476249496
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -75,10 +75,4 @@ public class GameManager : Singleton<GameManager>
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
     }
-
-    public void PauseGame()
-    {
-        Time.timeScale = 0;
-
-    }
 }

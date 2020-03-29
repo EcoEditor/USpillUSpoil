@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class PauseButton : MonoBehaviour
 {
+    public Sprite _pausedGame;
+    public Sprite _unPausedGame;
     private Image _myImage;
     private bool _isAnswered;
     //pause will also be called when head mount disaply is off
@@ -13,6 +15,7 @@ public class PauseButton : MonoBehaviour
     {
         _myImage = GetComponent<Image>();
         _myImage.color = Color.white;
+        _myImage.sprite = _unPausedGame;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -36,6 +39,7 @@ public class PauseButton : MonoBehaviour
     private void RecordAnswer()
     {
         _isAnswered = true;
+        _myImage.sprite = _pausedGame;
         MainCanvasManager.Instance.PauseGame();
     }
 }
